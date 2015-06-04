@@ -8,10 +8,12 @@
  * Controller of the yoAngularApp
  */
 angular.module('yoAngularApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+	.controller('MainCtrl', function ($scope) {
+	$scope.someText1 = 'text1';
+	$scope.awesomeThings = [
+		'HTML5 Boilerplate',
+		'AngularJS',
+		'Karma'
+	];
+	$scope.someText2 = 'text2';
+});
