@@ -25,11 +25,6 @@ var mainApp = angular
 	
 	
     $stateProvider
-        // HOME STATES  ========================================
-		        .state('/', {
-			templateUrl: 'views/main.html',
-			controller: 'MainCtrl'
-        })
         .state('home', {
 			templateUrl: 'views/main.html',
 			controller: 'MainCtrl'
