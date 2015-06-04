@@ -18,12 +18,8 @@ var mainApp = angular
 	'ui.router'
   ]);
   
-    // mainApp.config(function($routeProvider, $stateProvider, $urlRouterProvider) {
-  mainApp.config(function($routeProvider, $stateProvider, $urlRouterProvider) {
+  mainApp.config(function($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.otherwise('/home');
-	//$urlRouterProvider.when('/home', '/home/index');
-	
-	
     $stateProvider
         .state('home', {
 			url: '/home',
@@ -43,23 +39,3 @@ var mainApp = angular
 			controller: 'ContactCtrl'
         });		
 });
-/*
-  mainApp.config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .when('/contact', {
-        templateUrl: 'views/contact.html',
-        controller: 'ContactCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
-*/
