@@ -26,16 +26,19 @@ var mainApp = angular
 	
     $stateProvider
         .state('home', {
+			url: '/home',
 			templateUrl: 'views/main.html',
 			controller: 'MainCtrl'
         })
         // ABOUT STATE =================================
         .state('about', {
+			url: '/about',
 			templateUrl: 'views/about.html',
 			controller: 'AboutCtrl'
         })
         // ABOUT CONTACT =================================
         .state('contact', {
+			url: '/contact',
 			templateUrl: 'views/contact.html',
 			controller: 'ContactCtrl'
         });		
