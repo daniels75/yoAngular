@@ -23,22 +23,29 @@ angular
     'Authentication',
     'Home'	
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $httpProvider) {
+	  
+	 $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+    // $httpProvider.defaults.xsrfCookieName = 'CSRF-TOKEN';
+    // $httpProvider.defaults.xsrfHeaderName = 'X-CSRF-TOKEN';
+	  
     $routeProvider
 		.when('/', {
-			controller: 'HomeController',
-			templateUrl: 'views/home.html'
+			templateUrl: 'views/home.html',
+			controller: 'HomeController'
+			
 		})	
 		.when('/login', {
+			templateUrl: 'views/authentication/login.html',
 			controller: 'LoginController',
-			templateUrl: 'views/authentication/login.html'
+			
 		})
-		/*
-      .when('/', {
+	
+      .when('/main', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-	  */
+
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'

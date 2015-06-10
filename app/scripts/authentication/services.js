@@ -7,10 +7,12 @@ angular.module('Authentication')
     function (Base64, $http, $cookieStore, $rootScope, $timeout) {
         var service = {};
 
+
         service.Login = function (username, password, callback) {
 
             /* Dummy authentication for testing, uses $timeout to simulate api call
              ----------------------------------------------*/
+			 /*
             $timeout(function () {
                 var response = { success: username === 'test' && password === 'test' };
                 if (!response.success) {
@@ -18,14 +20,31 @@ angular.module('Authentication')
                 }
                 callback(response);
             }, 1000);
+			*/
 
-
+			/*
+			$http.get('http://api.worldoftanks.ru/2.0/account/info/?application_id=171745d21f7f98fd8878771da1000a31&account_id=19213,461').
+				success(function(data) {
+					$scope.wardatahttp = data;
+			});			
+			*/
+			
             /* Use this for real authentication
              ----------------------------------------------*/
-            //$http.post('/api/authenticate', { username: username, password: password })
-            //    .success(function (response) {
-            //        callback(response);
-            //    });
+			
+            $http.post('http://localhost:5500/users/login', { username: username, password: password }, {
+            withCredentials: true
+        })
+                .success(function (response) {
+                    callback(response);
+            });
+			
+			/*
+			 $http.post('http://localhost:8080', { username: username, password: password })
+                .success(function (response) {
+                    callback(response);
+            });
+			*/
 
         };
 
@@ -51,7 +70,12 @@ angular.module('Authentication')
 
         return service;
     }])
-
+.factory('httpDataResponse', ['$http', 
+  function($http){
+    var result = $http.get('http://api.worldoftanks.ru/2.0/account/info/?application_id=171745d21f7f98fd8878771da1000a31&account_id=19213,461');
+    return result;
+  }
+])
 .factory('Base64', function () {
     /* jshint ignore:start */
 
